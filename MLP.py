@@ -21,12 +21,17 @@ def train_model(clf):
     clf.partial_fit(X_train, y_train, classes=[1,2,3,4,5,6])
 
 def test_model(clf):
-    X_test = [[96, 96, 96, 96]]
+    X_test = [[50, 40, 45, 60], [98,95,94,90]]
 
-    ##y_test = 
+    y_test = [[3],[6]]
 
-    print(clf.predict(X_test))
+    y_test_demo = clf.predict(X_test)
+    accuracy = 0
+    for i in range(0, len(y_test)):
+        if y_test[i] == y_test_demo[i]:
+            accuracy = accuracy +1;
 
+    print(float(accuracy)/2)
     ##does the result match y_test?? - measure this than output the accuracy TP + TN/(TP+FP+FN+TN)
     ## TP = true positive, FP = false positive, FN = false negative, TN = true negative 
 
@@ -56,3 +61,4 @@ def run():
     ##       solver='lbfgs', tol=0.0001, validation_fraction=0.1, verbose=False,
     ##       warm_start=False)
 
+run()
